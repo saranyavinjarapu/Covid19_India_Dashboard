@@ -23,11 +23,11 @@ public class MainController {
 
 	@GetMapping("/")
 	public String home(Model model) {
-		List<CovidData> allStats = covidDataService.getAllStats();
+		List<CovidData> finalCovidData = covidDataService.getAllStats();
 
-		int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getConfirmed()).sum();
+		int totalReportedCases = finalCovidData.stream().mapToInt(stat -> stat.getConfirmed()).sum();
 
-		model.addAttribute("locationStats", allStats);
+		model.addAttribute("finalCovidData", finalCovidData);
 		model.addAttribute("totalReportedCases", totalReportedCases);
 
 		return "index";
