@@ -30,7 +30,7 @@ public class MainController {
 		model.addAttribute("finalCovidData", finalCovidData);
 		model.addAttribute("totalReportedCases", totalReportedCases);
 
-		return "index";
+		return "data_display";
 	}
 }
 
