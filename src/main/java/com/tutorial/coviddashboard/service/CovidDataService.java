@@ -21,19 +21,20 @@ import com.tutorial.coviddashboard.model.CovidData;
 @Service
 public class CovidDataService {
 
-	private List<CovidData> allStats = new ArrayList<>();
+	private static String COVID_DATA_URL = "https://api.covid19india.org/csv/latest/state_wise.csv";
 
-	public List<CovidData> getAllStats() {
+	private List<CovidData> allData = new ArrayList<>();
 
-		return allStats;
+	public List<CovidData> getAllData() {
+		return allData;
 	}
 
 	@PostConstruct
 	@Scheduled(cron = "* * 1 * * *")
 	public void fetchVirusData() throws IOException, InterruptedException {
-		List<CovidData> newStats = new ArrayList<>();
+		List<CovidData> newData = new ArrayList<>();
 		HttpClient client = HttpClient.newHttpClient();
-		HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://api.covid19india.org/csv/latest/state_wise.csv")).build();
+		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(COVID_DATA_URL)).build();
 		HttpResponse<String> httpResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
 		StringReader csvBodyReader = new StringReader(httpResponse.body());
 		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
@@ -44,9 +45,9 @@ public class CovidDataService {
 			covidstat.setRecovered(Integer.parseInt(record.get("Recovered")));
 			covidstat.setDeaths(Integer.parseInt(record.get("Deaths")));
 			covidstat.setActive(Integer.parseInt(record.get("Active")));
-			newStats.add(covidstat);
+			newData.add(covidstat);
 		}
-		this.allStats = newStats;
+		this.allData = newData;
 	}
 
 }

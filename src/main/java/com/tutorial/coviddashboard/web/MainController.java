@@ -23,7 +23,7 @@ public class MainController {
 
 	@GetMapping("/")
 	public String home(Model model) {
-		List<CovidData> finalCovidData = covidDataService.getAllStats();
+		List<CovidData> finalCovidData = covidDataService.getAllData();
 
 		int totalReportedCases = finalCovidData.stream().mapToInt(stat -> stat.getConfirmed()).sum();
 
