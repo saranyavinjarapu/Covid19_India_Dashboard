@@ -1,0 +1,46 @@
+.user_container {
+  padding-top: 2px;
+  align-items: center;
+  text-align: center;
+  border: 2px solid black;
+  top: 1px;
+  position: relative;
+}
+
+.user_form {
+  padding-top: 40px;
+}
+
+.form_title {
+  border: 2px solid black;
+  align-items: stretch;
+  background-color: aqua;
+}
+.jumbotron {
+  background-color: aqua;
+  height: 230px;
+}
+
+.jumbotron_totalcases {
+  background-color: lightskyblue;
+  height: 100px;
+}
+
+.jumbotron a {
+  font-size: 40px;
+}
+
+.navbar {
+  background-color: aqua;
+  font-size: 30px;
+}
+
+.navbar-header a {
+  font-size: 30px;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  display: flex !important;
+  justify-content: space-around;
+  flex-basis: auto;
+}

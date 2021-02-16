@@ -1,6 +1,8 @@
 package com.tutorial.coviddashboard.web;
 
 import java.util.List;
+//import java.util.Map;
+//import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,12 +26,11 @@ public class MainController {
 	@GetMapping("/")
 	public String home(Model model) {
 		List<CovidData> finalCovidData = covidDataService.getAllData();
-
 		int totalReportedCases = finalCovidData.stream().mapToInt(stat -> stat.getConfirmed()).sum();
-
+         		
 		model.addAttribute("finalCovidData", finalCovidData);
 		model.addAttribute("totalReportedCases", totalReportedCases);
-
+      
 		return "data_display";
 	}
 }

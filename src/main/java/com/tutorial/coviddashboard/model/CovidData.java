@@ -1,6 +1,5 @@
 package com.tutorial.coviddashboard.model;
 
-
 public class CovidData {
 
 	private String state;

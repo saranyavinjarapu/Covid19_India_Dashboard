@@ -13,52 +13,42 @@
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous"
     />
+    <link
+      href="../static/css/main.css"
+      th:href="@{/css/main.css}"
+      rel="stylesheet"
+      media="screen"
+    />
   </head>
   <body>
-    <!-- create navigation bar ( header) -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button
-            type="button"
-            class="navbar-toggle collapsed"
-            data-toggle="collapse"
-            data-target="#navbar"
-            aria-expanded="false"
-            aria-controls="navbar"
-          >
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span> <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#" th:href="@{/}">COVID 19 DASHBOARD</a>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav center">
+           <div class="navbar-header">         
+          <a class="navbar-brand" href="#" th:href="@{/}">COVID-19 DASHBOARD FOR INDIA</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
+           <ul class="nav navbar-nav">
             <li sec:authorize="isAuthenticated()">
               <a th:href="@{/logout}">Logout</a>
             </li>
           </ul>
-        </div>
       </div>
     </nav>
 
     <br />
-    <br />
 
-    <div class="container">
-      <h1>COVID-19 DASHBOARD FOR INDIA</h1>
-      <p>
-        This application lists the current number of cases reported across India
-      </p>
-
-      <div class="jumbotron">
+    <div class="container">      
+     
+      <div class="jumbotron_totalcases text-center ">
         <h1 class="display-4" th:text="${totalReportedCases}"></h1>
         <p class="lead">Total cases reported as of today</p>
-        <hr class="my-4" />
-      </div>
+       </div>
 
-      <table class="table">
+       <div>
+         
+       </div>
+
+       <table class="table">
         <tr>
           <th>State</th>
           <th>Confirmed cases</th>
